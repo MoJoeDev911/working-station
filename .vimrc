@@ -1,5 +1,13 @@
 set nocompatible              " be iMproved, required
+set background=dark
 filetype off                  " required <<========== We can turn it on later
+set nu
+set relativenumber
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+" Spell checking, the exclamation mark after spell turns on the toggle mode!
+map <F6> :setlocal spell! spelllang=en_us<CR>
+map <F7> :setlocal spell! spelllang=de<CR>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -9,9 +17,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-vinegar'
+" Plugin 'tpope/vim-vinegar'
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'christoomey/vim-tmux-navigator'
 " <============================================>
 " Specify the plugins you want to install here.
 " We'll come on that later
@@ -39,3 +47,19 @@ filetype plugin indent on    " required
 
 " Shortcut for opening NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" Easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Custom Maps for tmux navigation
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {c-h} :TmuxNavigateLeft<cr>
+nnoremap <silent> {c-j} :TmuxNavigateDown<cr>
+nnoremap <silent> {c-k} :TmuxNavigateUp<cr>
+nnoremap <silent> {c-l} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+let g:tmux_navigator_disable_when_zoomed = 1
