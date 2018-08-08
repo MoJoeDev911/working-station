@@ -34,8 +34,20 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
 
+" Spell checking, the exclamation mark after spell turns on the toggle mode!
+map <F6> :setlocal spell! spelllang=en_us<CR>  
+map <F7> :setlocal spell! spelllang=de<CR>
 
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+  
 " <=============Custom Key Mappings============>
 
 " Shortcut for opening NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+"make jj do esc"
+inoremap jj <Esc>
